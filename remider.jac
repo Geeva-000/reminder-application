@@ -15,7 +15,7 @@ walker User {
         obj.message = input("Enter reminder message: ");
         obj.due_time = datetime.fromisoformat(input("Enter due time (YYYY-MM-DD HH:MM): "));
         take --> obj;
-        report "✅ Reminder created!";
+        report " Reminder created!";
     }
 
     can show_reminders with {
@@ -31,7 +31,7 @@ walker User {
         now = datetime.now();
         for r in neighbors {
             if r.type == Reminder and r.due_time <= now {
-                report "⏰ Reminder due: " + r.message;
+                report " Reminder due: " + r.message;
                 destroy --> r; # remove after triggering
             }
         }
